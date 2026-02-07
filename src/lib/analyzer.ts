@@ -1,4 +1,3 @@
-import Sentiment from 'sentiment';
 
 // --- Types ---
 export interface FeedbackItem {
@@ -40,9 +39,10 @@ const TOPIC_KEYWORDS: Record<string, string[]> = {
     'Features': ['feature', 'missing', 'add', 'request', 'option', 'setting', 'customization']
 };
 
-// --- Core Logic ---
+const POSITIVE_WORDS = new Set(['great', 'good', 'love', 'amazing', 'excellent', 'best', 'fantastic', 'fast', 'easy', 'helpful', 'nice', 'clean', 'smooth', 'perfect', 'worth', 'cheap', 'value', 'stable', 'secure', 'beautiful', 'fun']);
+const NEGATIVE_WORDS = new Set(['bad', 'terrible', 'hate', 'awful', 'worst', 'slow', 'hard', 'difficult', 'confusing', 'ugly', 'bug', 'crash', 'error', 'rude', 'expensive', 'lag', 'failed', 'broken', 'mess', 'annoying', 'boring']);
 
-const sentimentAnalyzer = new Sentiment();
+// --- Core Logic ---
 
 export function analyzeFeedback(texts: string[]): AnalysisResult {
     const items: FeedbackItem[] = texts.map((text) => processSingleFeedback(text));
@@ -74,7 +74,21 @@ export function analyzeFeedback(texts: string[]): AnalysisResult {
 }
 
 function processSingleFeedback(text: string): FeedbackItem {
-    const result = sentimentAnalyzer.analyze(text);
+    // Simple heuristic sentiment analysis to avoid serverless dependency issues
+    const words = text.toLowerCase().match(/\b(\w+)\b/g) || [];
+    let score = 0;
+    const foundKeywords: string[] = [];
+
+    words.forEach(word => {
+        if (POSITIVE_WORDS.has(word)) {
+            score += 2;
+            foundKeywords.push(word);
+        }
+        else if (NEGATIVE_WORDS.has(word)) {
+            score -= 2;
+            foundKeywords.push(word);
+        }
+    });
 
     // Determine Category
     let category = 'General';
@@ -90,15 +104,15 @@ function processSingleFeedback(text: string): FeedbackItem {
 
     // Determine Label based on Score
     let label: 'positive' | 'negative' | 'neutral' = 'neutral';
-    if (result.score > 0) label = 'positive';
-    if (result.score < 0) label = 'negative';
+    if (score > 0) label = 'positive';
+    if (score < 0) label = 'negative';
 
     return {
         id: Math.random().toString(36).substr(2, 9),
         text,
-        sentimentScore: result.score,
+        sentimentScore: score,
         sentimentLabel: label,
-        keywords: result.words, // Using sentiment library's extracted words as keywords
+        keywords: foundKeywords,
         category
     };
 }
@@ -129,8 +143,8 @@ function generateInsights(themes: ThemeCluster[], distribution: { positive: numb
     const insights: string[] = [];
 
     // Insight 1: Overall Sentiment
-    if (avgSentiment > 2) insights.push("🚀 Users generally love the product! Sentiment is strongly positive.");
-    else if (avgSentiment < -1) insights.push("⚠️ Critical Action Required: Sentiment is trending negative.");
+    if (avgSentiment > 0.5) insights.push("🚀 Users generally love the product! Sentiment is strongly positive.");
+    else if (avgSentiment < -0.5) insights.push("⚠️ Critical Action Required: Sentiment is trending negative.");
     else insights.push("ℹ️ Product sentiment is mixed/neutral. Users have specific pain points.");
 
     // Insight 2: Problem Areas
