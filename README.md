@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Live-success)
 ![Tech](https://img.shields.io/badge/Built%20With-Next.js%20%7C%20TypeScript%20%7C%20NLP-blue)
 
-**[View Live Demo](https://voice-of-customer-sigma.vercel.app/)** *(Replace this with your actual Vercel link if different)*
+**[View Live Demo](https://voice-of-customer-dhstum9wu-angus-projects-5ec434e9.vercel.app)** *(This is your live link)*
 
 ## 🚀 Overview
 **Voice of Customer** is an AI-powered dashboard designed for Product Managers to instantly quantify and visualize unstructured user feedback. 
