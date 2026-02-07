@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Voice of Customer - AI Feedback Analyzer
 
-## Getting Started
+![Status](https://img.shields.io/badge/Status-Live-success)
+![Tech](https://img.shields.io/badge/Built%20With-Next.js%20%7C%20TypeScript%20%7C%20NLP-blue)
 
-First, run the development server:
+**[View Live Demo](https://voice-of-customer-sigma.vercel.app/)** *(Replace this with your actual Vercel link if different)*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Overview
+**Voice of Customer** is an AI-powered dashboard designed for Product Managers to instantly quantify and visualize unstructured user feedback. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Instead of manually reading thousands of support tickets, tweets, or app reviews, this tool uses natural language processing (NLP) to:
+1.   **Analyze Sentiment**: Determine if feedback is Positive, Neutral, or Negative.
+2.  **Cluster Themes**: Automatically group feedback into actionable categories (e.g., "Pricing", "UX", "Performance", "Bugs").
+3.  **Generate Insights**: Provide an executive summary of the top product issues.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Problem Statement
+Product Managers struggle to aggregate qualitative data from varied sources. Manual tagging is slow and biased. This tool automates the "Discovery" phase of the product lifecycle, allowing PMs to focus on "Execution."
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Technologies
+-   **Frontend**: Next.js 14, React, Tailwind CSS (Custom Design System)
+-   **Language**: TypeScript
+-   **Data Visualization**: Chart.js
+-   **AI/NLP Logic**: Sentiment.js, Keyword Clustering (Custom implementation)
+-   **Deployment**: Vercel
 
-## Learn More
+## ✨ Key Features
+-   **Real-time Analysis**: Paste any text and get instant results.
+-   **Glassmorphism UI**: Premium, dark-mode accessible design.
+-   **Interactive Charts**: drill-down into sentiment distribution.
+-   **Zero-API Cost**: Optimized to run client-side without expensive LLM API keys.
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
+*(You can add screenshots of your dashboard here later)*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Local Setup
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/angadsingh89/Voice-of-Customer.git
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+4.  Open [http://localhost:3000](http://localhost:3000)
