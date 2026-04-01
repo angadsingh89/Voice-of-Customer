@@ -1,0 +1,5 @@
+Portfolio,Weights (Gold / Silver / Copper %),Return (%),Volatility (%),Sharpe ratio
+Min variance,81.98 / 0.00 / 18.02,17.9668,17.4065,0.7737
+Max Sharpe,100.00 / 0.00 / 0.00,20.4252,18.0938,0.8802
+Equal weight,33.33 / 33.33 / 33.33,16.4609,23.8545,0.5014
+MIP (2 assets),100.00 / 0.00 / 0.00,20.4252,18.0938,0.8802

@@ -1,0 +1,8 @@
+yfinance
+numpy>=1.26
+pandas>=2.0,<3
+pyarrow>=14.0.0
+matplotlib
+cvxpy
+scipy
+tabulate

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ME F320 — Portfolio optimisation report</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #5c6370;
+      --border: #e3e6ef;
+      --accent: #2f6fed;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 18px 48px;
+    }
+    h1 {
+      font-size: 1.55rem;
+      margin: 0 0 8px;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 0 0 22px;
+      font-size: 0.95rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 18px 8px;
+      margin: 16px 0;
+      box-shadow: 0 8px 24px rgba(20, 24, 40, 0.06);
+    }
+    h2 {
+      font-size: 1.1rem;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+    .tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    .tbl th, .tbl td {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 8px;
+      text-align: left;
+    }
+    .tbl th {
+      background: #f0f3fa;
+      font-weight: 600;
+    }
+    .tbl tr:nth-child(even) td { background: #fafbff; }
+    .fig {
+      margin: 0 0 18px;
+    }
+    .fig img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .fig h3 {
+      font-size: 0.98rem;
+      margin: 0 0 10px;
+    }
+    .muted { color: var(--muted); font-size: 0.92rem; }
+    footer {
+      margin-top: 28px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Markowitz mean–variance portfolio optimisation</h1>
+    <p class="sub">Commodities: Gold (GC=F), Silver (SI=F), Copper (HG=F) · Sample period: 2021-04-01 → 2026-04-01</p>
+
+    <div class="card">
+      <h2>Portfolio comparison</h2>
+      <table class="tbl"><thead><tr><th>Portfolio</th><th>Weights (Gold / Silver / Copper %)</th><th>Return (%)</th><th>Volatility (%)</th><th>Sharpe ratio</th></tr></thead><tbody><tr><td>Min variance</td><td>81.98 / 0.00 / 18.02</td><td>17.9668</td><td>17.4065</td><td>0.7737</td></tr><tr><td>Max Sharpe</td><td>100.00 / 0.00 / 0.00</td><td>20.4252</td><td>18.0938</td><td>0.8802</td></tr><tr><td>Equal weight</td><td>33.33 / 33.33 / 33.33</td><td>16.4609</td><td>23.8545</td><td>0.5014</td></tr><tr><td>MIP (2 assets)</td><td>100.00 / 0.00 / 0.00</td><td>20.4252</td><td>18.0938</td><td>0.8802</td></tr></tbody></table>
+    </div>
+
+    <div class="card">
+      <h2>Graphs</h2>
+      <p class="muted">Efficient frontier sweep: <strong>150</strong> solved points.</p>
+      <figure class="fig"><h3>Efficient frontier &amp; capital market line</h3><img src="efficient_frontier.png" alt="Efficient frontier &amp; capital market line" loading="lazy"/></figure><figure class="fig"><h3>Portfolio weights along the frontier</h3><img src="weight_composition.png" alt="Portfolio weights along the frontier" loading="lazy"/></figure><figure class="fig"><h3>KKT stationarity check (LHS vs RHS)</h3><img src="kkt_verification.png" alt="KKT stationarity check (LHS vs RHS)" loading="lazy"/></figure>
+    </div>
+
+    <footer>
+      Generated from <code>outputs/</code> CSVs and PNGs. Re-run <code>python main.py</code> to refresh.
+    </footer>
+  </div>
+</body>
+</html>
